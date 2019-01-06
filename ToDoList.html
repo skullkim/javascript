@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    />
+    <script src="main.js"></script>
+    <style>
+      body {
+        width: 100%;
+        height: 100vh;
+      }
+      .template {
+        width: 600px;
+        height: 600px;
+      }
+      .todo-list-item {
+        width: 100%;
+        font-size: 14px;
+        border: 1px solid #f0f0f0f0;
+  
+      }
+    .ToDoButton{
+      width: 100px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex flex-column">
+      <div class="input-group">
+        <input id="todo" class="form-control" placeholder="To Do" />
+        <button id="confirm" class="btn btn-primary ToDoButton">확인</button>
+      </div>
+      <div id="list"></div>
+    </div>
+    <script>
+      var index = 0;
+      var DeleteToDoItem = function(DOM) {
+        DOM.parentElement.remove();
+      }
+      var modifyToDoItem = function(DOM){
+        var modifyText = prompt();
+        DOM.parentElement.children[0].innerText = modifyText;
+      }
+      document.querySelector('#confirm').onclick = function() {
+        var message = document.querySelector("#todo").value;
+        document.querySelector('#list').innerHTML +=
+        '<div class = "d-flex">' +
+          '<div class="todo-list-item p-2 text-center">' + message + "</div>"+
+          "<button class = 'btn btn-info ToDoButton' onclick='modifyToDoItem(this)'>수정</button>"+
+          "<button class = 'btn btn-danger ToDoButton' onclick='DeleteToDoItem(this)'>삭제</button>"+
+        '</div>'
+        document.querySelector('#todo').value = '';
+        // console.log(message);
+      };
+      
+    </script>
+  </body>
+</html>

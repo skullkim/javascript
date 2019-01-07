@@ -48,16 +48,32 @@
         var modifyText = prompt();
         DOM.parentElement.children[0].innerText = modifyText;
       }
+      var backgroundColorRed = function(DOM){
+        DOM.parentElement.style.backgroundColor = "red";
+      }
+      var backgroundColorGreen = function(DOM){
+        DOM.parentElement.style.backgroundColor = "green";
+      }
+      var backgroundColorBlue = function(DOM){
+        DOM.parentElement.style.backgroundColor = "blue";
+      }
       document.querySelector('#confirm').onclick = function() {
         var message = document.querySelector("#todo").value;
-        document.querySelector('#list').innerHTML +=
-        '<div class = "d-flex">' +
-          '<div class="todo-list-item p-2 text-center">' + message + "</div>"+
-          "<button class = 'btn btn-info ToDoButton' onclick='modifyToDoItem(this)'>수정</button>"+
-          "<button class = 'btn btn-danger ToDoButton' onclick='DeleteToDoItem(this)'>삭제</button>"+
-        '</div>'
-        document.querySelector('#todo').value = '';
+        if(!message) return false;
+        else{
+          document.querySelector('#list').innerHTML +=
+          '<div class = "d-flex">' +
+            '<div class="todo-list-item p-2 text-center">' + message + "</div>"+
+            "<button class = 'btn btn-info ToDoButton' onclick='modifyToDoItem(this)'>수정</button>"+
+            "<button class = 'btn btn-danger ToDoButton' onclick='DeleteToDoItem(this)'>삭제</button>"+
+            "<button class = 'btn btn-danger' onclick='backgroundColorRed(this)'></button>"+
+            "<button class = 'btn btn-success' onclick='backgroundColorGreen(this)'></button>"+
+            "<button class = 'btn btn-primary' onclick='backgroundColorBlue(this)'></button>"+
+          '</div>'
+          document.querySelector('#todo').value = '';
         // console.log(message);
+        }
+       
       };
       
     </script>

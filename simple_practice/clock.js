@@ -19,9 +19,6 @@ function returnHours(date){
 
 function getTime(){
     const date = new Date();
-    // const minutes = date.getMinutes();
-    // const hours = date.getHours();
-    // const seconds = date.getSeconds();
     clockTitle.innerText = `${returnHours(date)}:${returnMinutes(date)}:${returnSeconds(date)}`;
 }
 
